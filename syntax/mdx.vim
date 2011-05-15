@@ -1,7 +1,8 @@
 " Vim syntax file
-" Language:     MDX (MultiDimensional eXpressions)
-" Maintainer:   Finlay Cannon <fin AT finlaycannon DOT com>
-" Last Change:  26 Feb 2008
+" Language:    MDX (MultiDimensional eXpressions)
+" Maintainer:  Finlay Cannon <fin AT finlaycannon DOT com>
+" URL:         http://github.com/findango/mdxdotvim
+" Last Change: 26 Feb 2008
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -68,6 +69,9 @@ syn keyword mdxStatement session set subcube update where with
 syn region mdxString    start=+"+  skip=+\\\\\|\\"+  end=+"+
 syn region mdxString    start=+'+  skip=+\\\\\|\\'+  end=+'+
 
+" Member names
+syn region mdxIdentifier start="\[" end="\]"
+
 " Numbers
 syn match mdxNumber     "-\=\<\d*\.\=[0-9_]\>"
 
@@ -92,14 +96,15 @@ if version >= 508 || !exists("did_mdx_syn_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink mdxComment	Comment
-  HiLink mdxKeyword	mdxSpecial
-  HiLink mdxNumber	Number
-  HiLink mdxOperator	mdxStatement
-  HiLink mdxSpecial	Special
-  HiLink mdxStatement	Statement
-  HiLink mdxString	String
-  HiLink mdxTodo	Todo
+  HiLink mdxComment    Comment
+  HiLink mdxKeyword    mdxSpecial
+  HiLink mdxNumber     Number
+  HiLink mdxOperator   mdxStatement
+  HiLink mdxSpecial    Special
+  HiLink mdxStatement  Statement
+  HiLink mdxString     String
+  HiLink mdxTodo       Todo
+  HiLink mdxIdentifier Normal
 
   delcommand HiLink
 endif
